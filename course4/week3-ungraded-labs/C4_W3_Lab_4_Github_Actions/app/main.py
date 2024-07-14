@@ -19,7 +19,9 @@ class Wine(BaseModel):
 
 @app.post("/predict")
 def predict(wine: Wine):
+    # Get batches
     batches = wine.batches
+    # Transform to numpy array
     np_batches = np.array(batches)
     # Compute predictions
     pred = clf.predict(np_batches).tolist()
